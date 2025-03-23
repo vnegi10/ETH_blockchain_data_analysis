@@ -1,4 +1,4 @@
-# Ethereum transaction data analysis
+# Ethereum blockchain data analysis
 
 ## Overview
 
@@ -55,4 +55,43 @@ get_time_range()
 | min_timestamp | max_timestamp |
 | ------------- | ------------- |
 | 2022-03-05 19:36:27 | 2025-03-22 20:26:35 |
+```
+
+## Schema
+
+- blocks/\*parquet
+```
+Schema([('block_hash', Binary),
+        ('author', Binary),
+        ('block_number', UInt32),
+        ('gas_used', UInt64),
+        ('extra_data', Binary),
+        ('timestamp', UInt32),
+        ('base_fee_per_gas', UInt64),
+        ('chain_id', UInt64)])
+```
+
+- transactions/\*parquet
+```
+Schema([('block_number', UInt32),
+        ('transaction_index', UInt64),
+        ('transaction_hash', Binary),
+        ('nonce', UInt64),
+        ('from_address', Binary),
+        ('to_address', Binary),
+        ('value_binary', Binary),
+        ('value_string', String),
+        ('value_f64', Float64),
+        ('input', Binary),
+        ('gas_limit', UInt64),
+        ('gas_used', UInt64),
+        ('gas_price', UInt64),
+        ('transaction_type', UInt32),
+        ('max_priority_fee_per_gas', UInt64),
+        ('max_fee_per_gas', UInt64),
+        ('success', Boolean),
+        ('n_input_bytes', UInt32),
+        ('n_input_zero_bytes', UInt32),
+        ('n_input_nonzero_bytes', UInt32),
+        ('chain_id', UInt64)])
 ```
